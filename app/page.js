@@ -4,17 +4,33 @@ import React, { useState } from 'react'
 
 const page = () => {
 
-  const [title, settitle] = useState("");
-  const [desc, setdesc] = useState("");
+  let [title, settitle] = useState("");
+  let [desc, setdesc] = useState("");
+
+const [mainTask, setmainTask] = useState([])
 
   const submitHandler = (e)=>{
     e.preventDefault()
-    console.log(title);
-    console.log(desc);
+  setmainTask([...mainTask,{title, desc}]);
+    console.log(mainTask);
     console.log("added successfully");
-    // settitle=("")
-    // setdesc=("")
+     settitle("")
+     setdesc("")
   }
+
+let renderTask = <h2> no task availble</h2>
+if(mainTask.length>0){
+renderTask = mainTask.map((t,i)=>{
+  return (
+  <li>
+    <div className='flex justify-between'>
+    <h5 className='text-2xl font-semibold'>{t.title}</h5>
+    <h6 className='text-xl font-semibold'>{t.desc}</h6>
+  </div>
+  </li>
+  );
+});
+}
   return (
     <>
       <h1 className='bg-black text-white p-5 text-5xl font-bold text-center'> Naveen's Todo List</h1>
@@ -32,15 +48,15 @@ const page = () => {
         ></input>
         <button className='bg-black text-white text-2xl rounded m-5 px-4 py-2 font-bold' >Add Task</button>
       </form>
-    
+       <hr />
+       <div className='p-8 bg-slate-200'>
+       <ul>
+        {renderTask}
+       </ul>
+
+       </div>
     </>
   )
 }
 
 export default page
-// git init
-// git add README.md
-// git commit -m "first commit"
-// git branch -M main
-// git remote add origin https://github.com/naveenmaurya7705/ReactTodoApp.git
-// git push -u origin main
