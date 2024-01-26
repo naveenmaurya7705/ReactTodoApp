@@ -45,7 +45,7 @@ renderTask = mainTask.map((t,i)=>{
   return (
     <>
     
-      <h1 className='bg-black text-white p-5 text-5xl font-bold text-center'> Naveen's Todo List</h1>
+      <h1 className='bg-red-400 text-white p-5 text-5xl font-bold text-center'> Naveen's Todo List</h1>
 
       <form onSubmit={submitHandler}>
         <input type='text' className='border-zinc-800 border-2 m-9 px-4 py-2' placeholder='Enter your title here...!'  value={title} 
